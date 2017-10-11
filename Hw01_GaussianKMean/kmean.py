@@ -34,5 +34,6 @@ for i in range(len(x)):
     print("coordinate: ", x[i], "label: ", labels[i])
     plt.plot(x[i][0], x[i][1], colors[labels[i]], markersize = 5)
 
-plt.scatter(centroids[:,0], centroids[:,1], marker = "x", s = 150, linewidths= 5, zorder = 10)
+plt.title('Generate Gaussian blobs and clustering using K-Mean')
+plt.scatter(centroids[:,0], centroids[:,1], marker = "o", c="#000000", edgecolors="#ffffff", alpha=0.5, s = 150, linewidths= 5, zorder = 10)
 plt.show()
