@@ -19,9 +19,9 @@ for image in faces.images:
 targets = faces.target
 target_names = faces.target_names
 
-np.save(file='face_target.npy', arr=targets)
-np.save(file='face_target_name.npy', arr=target_names)
-np.save(file='face_data.npy', arr=data)
+np.save(file='data_target.npy', arr=targets)
+np.save(file='data_target_name.npy', arr=target_names)
+np.save(file='data_feature.npy', arr=data)
 
 
 # Check
