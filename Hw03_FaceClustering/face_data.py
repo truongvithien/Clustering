@@ -10,17 +10,20 @@ from skimage.feature import local_binary_pattern
 # Load data
 
 faces = fetch_lfw_people(min_faces_per_person=70, resize=0.4)
-n_samples, h, w = faces.images.shape
-data = faces.data
-n_features = data.shape[1]
+
+data = np.array([]).reshape(0,1850)
+for image in faces.images:
+    feature = local_binary_pattern(image, P=8, R=0.5)
+    data = np.append(data,[feature])
+
 targets = faces.target
 target_names = faces.target_names
-n_classes = target_names.shape[0]
+
+np.save(file='face_target.npy', arr=targets)
+np.save(file='face_target_name.npy', arr=target_names)
+np.save(file='face_data.npy', arr=data)
+
 
 # Check
-
-print("Datasets loaded: ")
-print("n samples: %d" %n_samples)
-print("n features: %d" %n_features)
-print("n classes: %d" %n_classes)
+print("Datasets loaded! ")
 
