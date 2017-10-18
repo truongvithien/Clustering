@@ -14,7 +14,7 @@ from sklearn.preprocessing import scale
 
 # Load data
 
-data = np.load('data.npy')
+data = np.load('data_feature.npy')
 target = np.load('data_target.npy')
 #np.load('data_target_name.npy')
 
