@@ -32,9 +32,7 @@ print(labels)
 
 data = PCA(n_components=2).fit_transform(data)
 
-plt.title('Digit data clustering using K-Mean')
-#plt.scatter(data[:, 0], data[:, 1], c=kmeans)
-#
+plt.title('Human faces clustering using K-Mean')
 plt.scatter(data[:, 0], data[:, 1], c=labels, marker='.', s=69, linewidths=3, zorder=10)
 plt.scatter(centroids[:, 0], centroids[:, 1], marker='o', s=69, linewidths=5, color='w', edgecolors="k", alpha=0.5, zorder=10)
 
