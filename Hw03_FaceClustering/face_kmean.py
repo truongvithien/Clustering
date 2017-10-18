@@ -9,9 +9,9 @@ matplotlib.style.use("ggplot")
 
 # Load data
 
-np.load('faces_data.npy')
-np.load('faces_target.npy')
-np.load('faces_target_name.npy')
+np.load('data_feature.npy')
+np.load('data_target.npy')
+np.load('data_target_name.npy')
 
 # Principal components analysis aka Reduce data into 2 dimensions
 reduced_data = PCA(n_components=2).fit_transform(data)
