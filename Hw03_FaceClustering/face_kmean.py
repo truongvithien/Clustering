@@ -6,20 +6,22 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.style.use("ggplot")
 
+from sklearn.cluster import KMeans
+
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import scale
+
 
 # Load data
 
-np.load('data_feature.npy')
-np.load('data_target.npy')
-np.load('data_target_name.npy')
-
-# Principal components analysis aka Reduce data into 2 dimensions
-reduced_data = PCA(n_components=2).fit_transform(data)
-
+data = np.load('data.npy')
+target = np.load('data_target.npy')
+#np.load('data_target_name.npy')
 
 # Using KMean
-kmeans = KMeans(n_clusters=n_digits)
-kmeans.fit(reduced_data)
+n_clusters = 7 # 7 classes in dataset.
+kmeans = KMeans(n_clusters=n_clusters)
+kmeans.fit_predict(data)
 
 centroids = kmeans.cluster_centers_
 labels = kmeans.labels_
@@ -28,7 +30,12 @@ labels = kmeans.labels_
 print(centroids)
 print(labels)
 
+data = PCA(n_components=2).fit_transform(data)
+
 plt.title('Digit data clustering using K-Mean')
-plt.scatter(reduced_data[:, 0], reduced_data[:, 1], c=labels, marker='.', s=69, linewidths=3, zorder=10)
+#plt.scatter(data[:, 0], data[:, 1], c=kmeans)
+#
+plt.scatter(data[:, 0], data[:, 1], c=labels, marker='.', s=69, linewidths=3, zorder=10)
 plt.scatter(centroids[:, 0], centroids[:, 1], marker='o', s=69, linewidths=5, color='w', edgecolors="k", alpha=0.5, zorder=10)
+
 plt.show()
