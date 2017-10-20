@@ -18,7 +18,8 @@ from sklearn.preprocessing import scale
 # Load data
 
 digits = load_digits()
-data = scale(digits.data)
+data = digits.data
+#data = scale(digits.data)
 
 n_samples, n_features = data.shape
 n_digits = len(np.unique(digits.target))
@@ -37,16 +38,14 @@ reduced_data = PCA(n_components=2).fit_transform(data)
 
 # Using KMean
 kmeans = KMeans(n_clusters=n_digits)
-kmeans.fit(reduced_data)
+kmeans.fit(data)
 
-centroids = kmeans.cluster_centers_
+#centroids = kmeans.cluster_centers_
 labels = kmeans.labels_
 
 # Visualize
-print(centroids)
 print(labels)
 
 plt.title('Digit data clustering using K-Mean')
 plt.scatter(reduced_data[:, 0], reduced_data[:, 1], c=labels, marker='.', s=69, linewidths=3, zorder=10)
-plt.scatter(centroids[:, 0], centroids[:, 1], marker='o', s=69, linewidths=5, color='w', edgecolors="k", alpha=0.5, zorder=10)
 plt.show()

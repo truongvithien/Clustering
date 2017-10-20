@@ -1,5 +1,5 @@
 # Learner: Truong Vi Thien (14520874)
-# Digit data clustering using Spectral Clustering.
+# Digit data clustering using DBSCAN.
 
 import numpy as np
 from time import time
@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.style.use("ggplot")
 
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.cluster import spectral_clustering
+from sklearn import metrics
+from sklearn.cluster import DBSCAN
 from sklearn.datasets import load_digits
 
 from sklearn.decomposition import PCA
@@ -36,13 +36,18 @@ print(82 * '_')
 reduced_data = PCA(n_components=2).fit_transform(data)
 
 
-# Using Spectral Clustering
-graph = cosine_similarity(digits.data)
-labels = spectral_clustering(graph, n_clusters=n_digits)
+# Using DBSCAN
+neighborhood_distance = 20
+min_samples = 5
+
+dbscan = DBSCAN(eps=neighborhood_distance, min_samples=min_samples)
+dbscan.fit(data)
+
+labels = dbscan.labels_
 
 # Visualize
 print(labels)
 
-plt.title('Digit data clustering using K-Mean')
+plt.title('Digit data clustering using DBSCAN')
 plt.scatter(reduced_data[:, 0], reduced_data[:, 1], c=labels, marker='.', s=69, linewidths=3, zorder=10)
 plt.show()

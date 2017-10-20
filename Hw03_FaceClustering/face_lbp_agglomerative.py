@@ -1,5 +1,5 @@
 # Learner: Truong Vi Thien (14520874)
-# Digit data clustering using Spectral Clustering.
+# Labeled clustering using Agglomerative.
 
 import numpy as np
 from time import time
@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.style.use("ggplot")
 
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.cluster import spectral_clustering
+from sklearn import metrics
+from sklearn.cluster import AgglomerativeClustering
 from sklearn.datasets import load_digits
 
 from sklearn.decomposition import PCA
@@ -36,13 +36,17 @@ print(82 * '_')
 reduced_data = PCA(n_components=2).fit_transform(data)
 
 
-# Using Spectral Clustering
-graph = cosine_similarity(digits.data)
-labels = spectral_clustering(graph, n_clusters=n_digits)
+# Using DBSCAN
+n_clusters = 10
+
+agglo = AgglomerativeClustering(n_clusters = n_clusters)
+agglo.fit(data)
+
+labels = agglo.labels_
 
 # Visualize
 print(labels)
 
-plt.title('Digit data clustering using K-Mean')
+plt.title('Digit data clustering using Agglomerative')
 plt.scatter(reduced_data[:, 0], reduced_data[:, 1], c=labels, marker='.', s=69, linewidths=3, zorder=10)
 plt.show()
