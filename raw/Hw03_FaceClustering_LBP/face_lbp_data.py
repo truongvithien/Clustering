@@ -11,7 +11,6 @@ from skimage.feature import local_binary_pattern
 
 faces = fetch_lfw_people(min_faces_per_person=70, resize=0.4)
 
-
 data = np.array([]).reshape(0,1850)
 for image in faces.images:
     feature = local_binary_pattern(image, P=8, R=0.5).flatten()
