@@ -1,5 +1,5 @@
 # Learner: Truong Vi Thien (14520874)
-# Human faces clustering using Agglomerative.
+# Digit data clustering using DBSCAN.
 
 import numpy as np
 from time import time
@@ -9,10 +9,9 @@ import matplotlib
 matplotlib.style.use("ggplot")
 
 from sklearn import metrics
-from sklearn.cluster import AgglomerativeClustering
+from sklearn.cluster import DBSCAN
 
 from sklearn.decomposition import PCA
-from sklearn.preprocessing import scale
 
 # Load data
 
@@ -24,16 +23,17 @@ target = np.load('data_target.npy')
 reduced_data = PCA(n_components=2).fit_transform(data)
 
 # Using DBSCAN
-n_clusters = 7
+neighborhood_distance = 1
+min_samples = 1
 
-agglo = AgglomerativeClustering(n_clusters = n_clusters)
-agglo.fit_predict(data)
+dbscan = DBSCAN(eps=neighborhood_distance, min_samples=min_samples)
+dbscan.fit(data)
 
-labels = agglo.labels_
+labels = dbscan.labels_
 
 # Visualize
 print(labels)
 
-plt.title(' Human faces clustering using Agglomerative.')
+plt.title('Digit data clustering using DBSCAN')
 plt.scatter(reduced_data[:, 0], reduced_data[:, 1], c=labels, marker='.', s=69, linewidths=3, zorder=10)
 plt.show()

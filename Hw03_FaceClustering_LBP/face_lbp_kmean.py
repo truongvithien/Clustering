@@ -27,13 +27,11 @@ centroids = kmeans.cluster_centers_
 labels = kmeans.labels_
 
 # Visualize
-print(centroids)
 print(labels)
 
 data = PCA(n_components=2).fit_transform(data)
 
 plt.title('Human faces clustering using K-Mean')
 plt.scatter(data[:, 0], data[:, 1], c=labels, marker='.', s=69, linewidths=3, zorder=10)
-plt.scatter(centroids[:, 0], centroids[:, 1], marker='o', s=69, linewidths=5, color='w', edgecolors="k", alpha=0.5, zorder=10)
 
 plt.show()

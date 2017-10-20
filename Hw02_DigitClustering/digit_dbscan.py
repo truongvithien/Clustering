@@ -37,8 +37,8 @@ reduced_data = PCA(n_components=2).fit_transform(data)
 
 
 # Using DBSCAN
-neighborhood_distance = 20
-min_samples = 5
+neighborhood_distance = 1
+min_samples = 1
 
 dbscan = DBSCAN(eps=neighborhood_distance, min_samples=min_samples)
 dbscan.fit(data)

@@ -1,11 +1,15 @@
 # Clustering
-_This is first assignment of the course "Machine Learning in Computer Vision" which holden by Duy-Le Dinh, Dung-Mai Tien at University of Information Technology, Ho Chi Minh City, Viet Nam._
+_This is first assignment of the course "Machine Learning in Computer Vision" which taught by Duy-Le Dinh, Dung-Mai Tien at University of Information Technology, Ho Chi Minh City, Viet Nam._
+
+---
 
 ## Language, Library
-_ Language: Python
-_ Library: SciLearn, SciImage, NumPy, MathPlot
+- Language: Python
+- Library: SciLearn, SciImage, NumPy, MathPlot
 
 ### Using Library:
+
+---
 
 ## Datasets
 1. Handwritten Digit Dataset (1797 8x8 images, 10 classes)
@@ -17,3 +21,4 @@ _ Library: SciLearn, SciImage, NumPy, MathPlot
 3. DBSCAN (Density Based Spatial Clustering of Applications with Noises)
 4. Agglomerative Clustering
 
+---
