@@ -13,10 +13,10 @@ from skimage.feature import hog
 
 faces = fetch_lfw_people(min_faces_per_person=70, resize=0.4)
 
-data = np.array([]).reshape(0,1850)
+data = []
 for image in faces.images:
-    feature = hog(image, orientations = 8, pixels_per_cell=(16, 16), cells_per_block=(1, 1), visualise=False)
-    data = np.append(data,[feature])
+    feature = hog(image, block_norm='L2')
+    data.append(feature)
 
 targets = faces.target
 target_names = faces.target_names
